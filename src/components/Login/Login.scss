@@ -1,0 +1,33 @@
+.login {
+  &__options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__button {
+    margin: 10px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+
+  &__label {
+    padding: 10px;
+  }
+
+  &__input {
+    padding: 10px;
+    width: 60%;
+  }
+
+  &__submit {
+    margin-top: 20px;
+  }
+}
