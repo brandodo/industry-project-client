@@ -1,0 +1,44 @@
+.dashboard {
+  &__news {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+    }
+
+    &-header {
+      margin: 0;
+    }
+
+    &-hide {
+      width: fit-content;
+      position: relative;
+      top: 30px;
+      left: 45%;
+      font-weight: 700;
+      color: white;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    &-background {
+      width: 100%;
+    }
+
+    &-headline {
+      position: absolute;
+      color: white;
+      font-weight: 700;
+      padding: 10px 10px;
+      text-shadow: 4px 4px 5px black;
+      background-color: rgba(0, 0, 0, 0.75);
+    }
+  }
+}

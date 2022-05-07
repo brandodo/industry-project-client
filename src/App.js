@@ -1,6 +1,6 @@
-import "./App.css";
+import "./App.scss";
 import Header from "./components/Header/Header";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import AboutPage from "./pages/AboutPage";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { useState } from "react";
@@ -11,13 +11,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div id="outer-container">
+      <div className="app">
         <Header setUser={setUser} />
-        <Switch>
-          <Route path="/" exact render={() => <LoginPage user={user} />} />
-          <Route path="/dashboard" render={() => <Dashboard />} />
-          <Route path="/about" render={() => <AboutPage user={user} />} />
-        </Switch>
+        <div id="outer-container" className="appContainer">
+          <Switch>
+            <Route path="/" exact render={() => <LoginPage user={user} />} />
+            <Route path="/dashboard" render={() => <Dashboard />} />
+            <Route path="/about" render={() => <AboutPage user={user} />} />
+          </Switch>
+        </div>
       </div>
     </BrowserRouter>
   );
