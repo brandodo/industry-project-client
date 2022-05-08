@@ -7,11 +7,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 15px 30px;
   }
 
   &__button {
     @include button($textPrimary, $ctaPrimary);
-    margin: 10px;
+    margin: 15px 0;
+    width: 100%;
 
     &:hover {
       cursor: pointer;
@@ -39,5 +41,10 @@
   &__submit {
     @include button($textPrimary, $ctaSecondary);
     margin-top: 20px;
+
+    &--disabled {
+      background-color: $ctaDisabled;
+      color: $default;
+    }
   }
 }

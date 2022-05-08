@@ -6,10 +6,24 @@
   overflow: hidden;
   &__header {
     @include welcome;
+    padding: 0 30px;
+    padding-top: 15px;
 
     & span {
       font-family: "Poppins-Med";
       color: $textPrimary;
     }
+  }
+
+  &__logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 34px;
+  }
+
+  &__logo {
+    width: 80%;
   }
 }

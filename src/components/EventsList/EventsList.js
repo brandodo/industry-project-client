@@ -11,7 +11,11 @@ export default function EventsList() {
   useEffect(() => {
     axios
       .get(DUMMY_API)
-      .then((res) => setData(res.data))
+      .then((res) => {
+        const temp = res.data.slice(1, 6);
+        console.log(res.data);
+        setData(temp);
+      })
       .catch((err) => {
         return err;
       });

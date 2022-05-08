@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 15px 0;
+  padding: 15px 30px 50px;
 
   &__gradient {
     width: 40%;
@@ -58,6 +58,15 @@
     border-radius: 30px;
   }
 
+  &__hContainer {
+    width: 100%;
+    padding: 15px 0;
+  }
+
+  &__header {
+    @include subHeader($textPrimary);
+  }
+
   &__qrCode {
     width: 100%;
   }
@@ -65,5 +74,6 @@
   &__button {
     text-decoration: none;
     @include button($textPrimary, $ctaSecondary);
+    width: 100%;
   }
 }

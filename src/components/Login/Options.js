@@ -1,32 +1,23 @@
 import React from "react";
+import LoginButton from "./LoginButton";
 
-export default function ({ setLogin, setUser, setShow }) {
+export default function ({ setLogin, setUserType, setShow }) {
   return (
     <div className="login__options">
-      <button
-        className="login__button"
-        onClick={() => {
-          setShow(false);
-          setTimeout(() => {
-            setLogin(true);
-            setUser("Employee");
-          }, 1000);
-        }}
+      <LoginButton
+        setLogin={setLogin}
+        setUserType={setUserType}
+        setShow={setShow}
       >
-        EMPLOYEE
-      </button>
-      <button
-        className="login__button"
-        onClick={() => {
-          setShow(false);
-          setTimeout(() => {
-            setLogin(true);
-            setUser("Employer");
-          }, 1000);
-        }}
+        Employee
+      </LoginButton>
+      <LoginButton
+        setLogin={setLogin}
+        setUserType={setUserType}
+        setShow={setShow}
       >
-        EMPLOYER
-      </button>
+        Employer
+      </LoginButton>
     </div>
   );
 }

@@ -1,0 +1,30 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.booking {
+  display: flex;
+  flex-direction: column;
+
+  padding: 15px 0 50px;
+
+  &__header {
+    @include mainHeader;
+    padding: 30px 30px 15px;
+  }
+
+  &__submitContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__submit {
+    @include button($textPrimary, $ctaSecondary);
+    margin: 15px 0;
+    align-self: center;
+
+    &--disabled {
+      background-color: $ctaDisabled;
+      color: $default;
+    }
+  }
+}

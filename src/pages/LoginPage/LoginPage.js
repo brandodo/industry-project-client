@@ -3,11 +3,14 @@ import { Redirect } from "react-router-dom";
 import { useTransition, animated, config } from "react-spring";
 import Login from "../../components/Login/Login";
 import Options from "../../components/Login/Options";
+import axios from "axios";
+import API_URL from "../../components/utils";
+import logo from "../../assets/images/flex-office-logo_V01.png";
 import "./LoginPage.scss";
 
-export default function LoginPage() {
+export default function LoginPage({ setUser, setStatus, setDate }) {
   const [login, setLogin] = useState(false);
-  const [userType, setUser] = useState();
+  const [userType, setUserType] = useState();
   const [redirect, setRedirect] = useState(false);
   const [show, setShow] = useState(false);
   const [loginShow, setLoginShow] = useState(false);
@@ -20,7 +23,7 @@ export default function LoginPage() {
     from: { x: 0, y: -100, opacity: 0 },
     enter: { x: 0, y: 0, opacity: 1 },
     leave: { x: 300, opacity: 0 },
-    config: config.stiff,
+    config: config.slow,
   });
 
   const formTransition = useTransition(login, {
@@ -33,14 +36,24 @@ export default function LoginPage() {
   // add function call to authenticate login
   // redirect to dashboard after successful login
   const goToDashboard = (email, password) => {
-    if (email && password) {
-      setRedirect(true);
-    } else {
-      alert("Please fill in the missing details");
-    }
+    axios
+      .post(`${API_URL}/login`, { email, password })
+      .then(({ data }) => {
+        console.log(data);
+        setUser(data.username);
+        setStatus(data.userInfo[0].qrcodecolor);
+        setDate(data.userInfo[0].date);
+        setRedirect(true);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err.response.data);
+      });
   };
 
   // handle error if invalid user
+
+  // redirect to dashboard after successful login
   if (redirect) {
     return <Redirect to="/dashboard" from="/" />;
   }
@@ -49,26 +62,26 @@ export default function LoginPage() {
     <main className="login">
       {loginTransition(
         (styles, show) =>
-          show && (
+          show &&
+          !login && (
             <>
-              {!login && (
-                <animated.h2 className="login__header" style={styles}>
-                  <span>Welcome to your</span> in-office <span>booking</span>
-                  solution!
-                </animated.h2>
-              )}
+              <animated.div className="login__logoContainer" style={styles}>
+                <img className="login__logo" src={logo} alt="logo" />
+              </animated.div>
+              <animated.h2 className="login__header" style={styles}>
+                <span>Welcome to your</span> in-office <span>booking</span>{" "}
+                solution!
+              </animated.h2>
               <animated.h2 className="login__header" style={styles}>
                 <span>Log-in</span>
               </animated.h2>
-              {!login && (
-                <animated.div style={styles}>
-                  <Options
-                    setLogin={setLogin}
-                    setUser={setUser}
-                    setShow={setShow}
-                  />
-                </animated.div>
-              )}
+              <animated.div style={styles}>
+                <Options
+                  setLogin={setLogin}
+                  setUserType={setUserType}
+                  setShow={setShow}
+                />
+              </animated.div>
             </>
           )
       )}
@@ -77,6 +90,9 @@ export default function LoginPage() {
         (styles, login) =>
           login && (
             <animated.div style={styles}>
+              <animated.h2 className="login__header" style={styles}>
+                <span>Log-in</span>
+              </animated.h2>
               <Login userType={userType} formHandler={goToDashboard} />
             </animated.div>
           )

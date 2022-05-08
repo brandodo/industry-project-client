@@ -1,0 +1,14 @@
+@use "../../styles/partials/variables" as *;
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 30px;
+  background-color: $backSecondary;
+
+  &__logo {
+    padding-top: 25px;
+    width: 40%;
+  }
+}

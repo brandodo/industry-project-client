@@ -1,0 +1,43 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.roomBooking {
+  padding: 15px 30px 50px;
+  &__header {
+    @include subHeader($textPrimary);
+  }
+
+  &__mapContainer {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__map {
+    width: 100%;
+    transition: all 0.5s ease;
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  &__option {
+    background-color: $ctaPrimary;
+    width: 100px;
+    height: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    border-radius: 4px;
+
+    &--active {
+      background-color: $ctaHover;
+      color: $textHover;
+    }
+  }
+}
