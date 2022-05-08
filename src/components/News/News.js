@@ -26,7 +26,7 @@ export default function News() {
   return (
     !hide && (
       <section className="dashboard__news">
-        <h3 className="dashboard__news-header">News</h3>
+        {/* <h3 className="dashboard__news-header">News</h3> */}
         <div className="dashboard__news-container">
           <div
             className="dashboard__news-hide"

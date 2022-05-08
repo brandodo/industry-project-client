@@ -1,13 +1,16 @@
 import React from "react";
 
-export default function ({ setLogin, setUser }) {
+export default function ({ setLogin, setUser, setShow }) {
   return (
     <div className="login__options">
       <button
         className="login__button"
         onClick={() => {
-          setLogin(true);
-          setUser("Employee");
+          setShow(false);
+          setTimeout(() => {
+            setLogin(true);
+            setUser("Employee");
+          }, 1000);
         }}
       >
         EMPLOYEE
@@ -15,8 +18,11 @@ export default function ({ setLogin, setUser }) {
       <button
         className="login__button"
         onClick={() => {
-          setLogin(true);
-          setUser("Employer");
+          setShow(false);
+          setTimeout(() => {
+            setLogin(true);
+            setUser("Employer");
+          }, 1000);
         }}
       >
         EMPLOYER

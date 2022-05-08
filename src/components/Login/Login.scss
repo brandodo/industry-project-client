@@ -1,3 +1,6 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
 .login {
   &__options {
     display: flex;
@@ -7,7 +10,14 @@
   }
 
   &__button {
+    @include button($textPrimary, $ctaPrimary);
     margin: 10px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $ctaHover;
+      color: $textHover;
+    }
   }
 
   &__form {
@@ -23,11 +33,11 @@
   }
 
   &__input {
-    padding: 10px;
-    width: 60%;
+    @include formField;
   }
 
   &__submit {
+    @include button($textPrimary, $ctaSecondary);
     margin-top: 20px;
   }
 }

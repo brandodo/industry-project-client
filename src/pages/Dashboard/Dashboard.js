@@ -5,13 +5,13 @@ import Events from "../../components/Events/Events";
 
 import "./Dashboard.scss";
 
-export default function HomePage({ user }) {
+export default function HomePage({ user, match }) {
   return (
     <main id="page-wrap" className="dashboard">
-      <h2 className="dashboard__headerText">Dashboard</h2>
-
+      <h2 className="dashboard__headerText">Good Morning, Yibo</h2>
+    
       <News />
-      <Status />
+      <Status match={match} />
       <Schedule />
       <Events />
     </main>

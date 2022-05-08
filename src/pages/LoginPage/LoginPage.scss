@@ -1,3 +1,15 @@
-.login__header {
-  text-align: center;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/fonts" as *;
+@use "../../styles/partials/variables" as *;
+
+.login {
+  overflow: hidden;
+  &__header {
+    @include welcome;
+
+    & span {
+      font-family: "Poppins-Med";
+      color: $textPrimary;
+    }
+  }
 }

@@ -1,3 +1,6 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
 .status {
   display: flex;
   flex-direction: column;
@@ -5,16 +8,62 @@
   align-items: center;
   padding: 15px 0;
 
-  &__header {
+  &__gradient {
+    width: 40%;
+    padding: 15px;
+    height: fit-content;
+    border-radius: 40px;
+    margin: 15px 0;
+
+    &--success {
+      background-image: linear-gradient(
+        to top left,
+        $success-one,
+        $success-two,
+        $success-three,
+        $success-four,
+        $success-five,
+        $success-six
+      );
+    }
+
+    &--warning {
+      background-image: linear-gradient(
+        to top left,
+        $warning-one,
+        $warning-two,
+        $warning-three,
+        $warning-four,
+        $warning-five,
+        $warning-six
+      );
+    }
+
+    &--error {
+      background-image: linear-gradient(
+        to top left,
+        $error-one,
+        $error-two,
+        $error-three,
+        $error-four,
+        $error-five,
+        $error-six
+      );
+    }
   }
 
   &__container {
     border-radius: 10px;
-    background-color: green;
-    width: 80%;
+    background-color: $default;
+    border-radius: 30px;
   }
 
   &__qrCode {
     width: 100%;
+  }
+
+  &__button {
+    text-decoration: none;
+    @include button($textPrimary, $ctaSecondary);
   }
 }

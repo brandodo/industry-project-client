@@ -1,6 +1,13 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
 .dashboard {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  &__headerText {
+    @include mainHeader;
+  }
 }

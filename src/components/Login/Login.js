@@ -27,7 +27,7 @@ export default function Login({ userType, formHandler }) {
         onChange={(event) => setPassword(event.target.value)}
       />
 
-      <input className="login__submit" type="submit" />
+      <input className="login__submit" type="submit" value="Enter" />
     </form>
   );
 }
