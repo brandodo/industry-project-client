@@ -13,7 +13,6 @@ export default function News() {
 
   useEffect(() => {
     axios.get(`${API_URL}q=covid&apiKey=${API_KEY}`).then(({ data }) => {
-      console.log(data);
       const { articles } = data;
       const dataLen = articles.length;
       const random = Math.floor(Math.random() * dataLen);

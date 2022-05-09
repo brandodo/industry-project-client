@@ -7,6 +7,10 @@
   font-family: "Poppins-Reg";
 }
 
+html {
+  height: 100%;
+}
+
 .app {
   width: 100%;
   height: 100%;
@@ -14,5 +18,6 @@
 }
 
 .appContainer {
+  height: 100%;
   padding-top: 86px;
 }

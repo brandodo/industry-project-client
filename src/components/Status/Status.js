@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Moment from "react-moment";
 import qrCode from "../../assets/images/QRcode-placeholder.png";
 import "./Status.scss";
 
 export default function Status({ match, status, date }) {
   const show = match.url === "/status" ? false : true;
-
-  // feed user data status, state stores success, warning or error
 
   return (
     <section className="status">
@@ -18,7 +16,9 @@ export default function Status({ match, status, date }) {
           <img className="status__qrCode" src={qrCode} alt="qr-code" />
         </div>
       </div>
-      <p className="status__text">Last recorded: {date}</p>
+      <p className="status__text">
+        Last recorded: <Moment format="YYYY-MMM-DD">{date}</Moment>
+      </p>
       {show && (
         <Link to="/status" className="status__button">
           Update My Status

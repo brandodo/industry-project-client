@@ -1,16 +1,65 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
 .questionnaire {
   display: flex;
   flex-direction: column;
-  width: 100%;
   justify-content: center;
   align-items: center;
-  padding: 15px 0;
+  padding: 30px 30px 50px;
+  background-color: $default;
+
+  &__radioHeader {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    width: 30%;
+  }
+
+  &__radioLabel {
+    font-size: 20px;
+    line-height: 32px;
+    color: $textPrimary;
+  }
 
   &__container {
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    align-items: center;
+    width: 100%;
     padding: 20px 0;
     // align-items: center;
+  }
+
+  &__options {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 30%;
+  }
+
+  &__question {
+    width: 70%;
+  }
+
+  &__disclaimer {
+    padding: 25px 0;
+    color: $textPrimary;
+    font-size: 20px;
+    line-height: 32px;
+  }
+
+  &__button {
+    @include button($textPrimary, $ctaSecondary);
+
+    &--disabled {
+      background-color: $ctaDisabled;
+      color: $default;
+    }
   }
 }

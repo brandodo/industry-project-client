@@ -1,0 +1,42 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.updatedModal {
+  background-color: rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1;
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    background-color: $backPrimary;
+    padding: 40px;
+    margin-top: 350px;
+  }
+
+  &__text {
+    padding-bottom: 10px;
+  }
+
+  &__list {
+    padding-left: 30px;
+
+    & > li {
+      text-align: left;
+    }
+  }
+
+  &__button {
+    @include button($textPrimary, $ctaSecondary);
+    width: 100%;
+    text-decoration: none;
+  }
+}

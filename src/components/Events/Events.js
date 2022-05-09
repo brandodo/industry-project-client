@@ -14,7 +14,6 @@ export default function Events() {
     axios
       .get(DUMMY_API)
       .then((res) => {
-        console.log(res.data);
         setData(res.data);
       })
       .catch((err) => {

@@ -71,6 +71,10 @@
     width: 100%;
   }
 
+  &__text {
+    padding-bottom: 15px;
+  }
+
   &__button {
     text-decoration: none;
     @include button($textPrimary, $ctaSecondary);

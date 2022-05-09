@@ -35,14 +35,12 @@ export default function LoginPage({ setUser, setStatus, setDate }) {
 
   // add function call to authenticate login
   // redirect to dashboard after successful login
-  const goToDashboard = (email, password) => {
+  const goToDashboard = (userid, password) => {
     axios
-      .post(`${API_URL}/login`, { email, password })
+      .post(`${API_URL}/login`, { userid, password })
       .then(({ data }) => {
-        console.log(data);
-        setUser(data.username);
-        setStatus(data.userInfo[0].qrcodecolor);
-        setDate(data.userInfo[0].date);
+        setUser(data);
+        sessionStorage.setItem("userData", JSON.stringify(data));
         setRedirect(true);
       })
       .catch((err) => {

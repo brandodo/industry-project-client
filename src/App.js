@@ -1,57 +1,46 @@
-import "./App.scss";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Header from "./components/Header/Header";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import StatusPage from "./pages/StatusPage/StatusPage";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { useState } from "react";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import EventsPage from "./pages/EventsPage/EventsPage";
 import BookingPage from "./pages/BookingPage/BookingPage";
 import Footer from "./components/Footer/Footer";
+import "./App.scss";
 
 function App() {
-  const [user, setUser] = useState();
-  const [status, setStatus] = useState();
-  const [date, setDate] = useState();
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    if (user.userid == null) {
+      setUser(JSON.parse(sessionStorage.getItem("userData")));
+    }
+  }, [user]);
 
   return (
     <BrowserRouter>
       <div className="app">
         <Header user={user} />
-        <div id="outer-container" className={user ? "appContainer" : ""}>
+        <div id="outer-container" className={user.userid ? "appContainer" : ""}>
           <Switch>
             <Route
               path="/"
               exact
               render={(routerProps) => (
-                <LoginPage
-                  setUser={setUser}
-                  setStatus={setStatus}
-                  setDate={setDate}
-                  {...routerProps}
-                />
+                <LoginPage setUser={setUser} {...routerProps} />
               )}
             />
             <Route
               path="/dashboard"
               render={(routerProps) => (
-                <Dashboard
-                  user={user}
-                  status={status}
-                  date={date}
-                  {...routerProps}
-                />
+                <Dashboard user={user} setUser={setUser} {...routerProps} />
               )}
             />
             <Route
               path="/status"
               render={(routerProps) => (
-                <StatusPage
-                  user={user}
-                  status={status}
-                  date={date}
-                  {...routerProps}
-                />
+                <StatusPage user={user} setUser={setUser} {...routerProps} />
               )}
             />
             <Route
