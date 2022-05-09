@@ -23,14 +23,68 @@
   &__container {
     display: flex;
     overflow-x: scroll;
-  }
-
-  &__eventCard {
-    width: 225px;
     height: 225px;
+  }
+}
+
+.event {
+  &__eventCard {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
     flex-shrink: 0;
     background-color: grey;
     margin: 0 15px;
     border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 2px 2px 8px black;
+    padding: 0 8px;
+  }
+
+  &__image {
+    width: 100%;
+    transform: scale(1.5);
+    padding-top: 35px;
+  }
+
+  &__textContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: flex-end;
+    height: 85%;
+    color: $default;
+    padding-bottom: 15px;
+  }
+
+  &__header {
+    text-shadow: 2px 2px 3px black;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 21px;
+    text-shadow: 2px 2px 3px black;
+
+    &--time {
+      background-image: url("../../assets/images/clock.svg");
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: contain;
+      padding-left: 25px;
+      margin-bottom: 5px;
+    }
+
+    &--room {
+      background-image: url("../../assets/images/location-pin.svg");
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: contain;
+      padding-left: 25px;
+    }
   }
 }

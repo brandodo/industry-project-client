@@ -1,0 +1,9 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.eventsPage {
+  padding: 50px 30px;
+  &__header {
+    @include subHeader($textPrimary);
+  }
+}

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Event from "./Event";
-
+import API_URL from "../utils";
 import "./Events.scss";
 
 export default function Events() {
@@ -12,14 +12,20 @@ export default function Events() {
 
   useEffect(() => {
     axios
-      .get(DUMMY_API)
+      .get(`${API_URL}/booking/event`)
       .then((res) => {
+        console.log(res.data);
         setData(res.data);
       })
       .catch((err) => {
         return err;
       });
   }, []);
+
+  if (!data) return null;
+
+  const preview = data.slice(0, 3).map((item) => <Event data={item} />);
+  console.log(preview);
 
   return (
     <section className="events">
@@ -29,12 +35,7 @@ export default function Events() {
           View More
         </Link>
       </div>
-      <div className="events__container">
-        {/* map array to list of event card components*/}
-        <Event />
-        <Event />
-        <Event />
-      </div>
+      <div className="events__container">{preview}</div>
     </section>
   );
 }

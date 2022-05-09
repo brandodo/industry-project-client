@@ -8,12 +8,11 @@ import API_URL from "../../components/utils";
 import logo from "../../assets/images/flex-office-logo_V01.png";
 import "./LoginPage.scss";
 
-export default function LoginPage({ setUser, setStatus, setDate }) {
+export default function LoginPage({ setUser, setLoggedIn }) {
   const [login, setLogin] = useState(false);
   const [userType, setUserType] = useState();
   const [redirect, setRedirect] = useState(false);
   const [show, setShow] = useState(false);
-  const [loginShow, setLoginShow] = useState(false);
 
   useEffect(() => {
     setShow(true);
@@ -41,6 +40,7 @@ export default function LoginPage({ setUser, setStatus, setDate }) {
       .then(({ data }) => {
         setUser(data);
         sessionStorage.setItem("userData", JSON.stringify(data));
+        setLoggedIn(true);
         setRedirect(true);
       })
       .catch((err) => {

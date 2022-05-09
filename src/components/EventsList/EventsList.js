@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import EventCard from "./EventCard";
 import axios from "axios";
+import API_URL from "../utils";
 import "./EventsList.scss";
 
 export default function EventsList() {
@@ -10,24 +11,18 @@ export default function EventsList() {
 
   useEffect(() => {
     axios
-      .get(DUMMY_API)
+      .get(`${API_URL}/booking/event`)
       .then((res) => {
-        const temp = res.data.slice(1, 6);
         console.log(res.data);
-        setData(temp);
+        setData(res.data);
       })
       .catch((err) => {
         return err;
       });
   }, []);
 
-  return (
-    <div className="eventsList">
-      {data
-        ? data.map((image) => {
-            return <EventCard data={image} />;
-          })
-        : ""}
-    </div>
-  );
+  if (!data) return null;
+
+  const listOfEvents = data.map((event) => <EventCard data={event} />);
+  return <div className="eventsList">{listOfEvents}</div>;
 }

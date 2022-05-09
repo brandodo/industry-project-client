@@ -10,25 +10,35 @@ import Footer from "./components/Footer/Footer";
 import "./App.scss";
 
 function App() {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState();
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
-    if (user.userid == null) {
+    if (!user && !loggedIn) {
       setUser(JSON.parse(sessionStorage.getItem("userData")));
+      setLoggedIn(true);
     }
+
+    // return () => {
+    //   sessionStorage.clear();
+    // };
   }, [user]);
 
   return (
     <BrowserRouter>
       <div className="app">
-        <Header user={user} />
-        <div id="outer-container" className={user.userid ? "appContainer" : ""}>
+        <Header user={user} loggedIn={loggedIn} />
+        <div id="outer-container" className={user ? "appContainer" : ""}>
           <Switch>
             <Route
               path="/"
               exact
               render={(routerProps) => (
-                <LoginPage setUser={setUser} {...routerProps} />
+                <LoginPage
+                  setUser={setUser}
+                  setLoggedIn={setLoggedIn}
+                  {...routerProps}
+                />
               )}
             />
             <Route

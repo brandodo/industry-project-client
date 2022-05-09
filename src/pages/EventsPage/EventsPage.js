@@ -1,5 +1,5 @@
-import React from "react";
 import EventsList from "../../components/EventsList/EventsList";
+import "./EventsPage.scss";
 
 export default function EventsPage() {
   return (

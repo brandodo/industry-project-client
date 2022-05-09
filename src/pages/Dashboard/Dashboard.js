@@ -8,10 +8,9 @@ import "./Dashboard.scss";
 import { useEffect } from "react";
 
 export default function Dashboard({ user, match, setUser }) {
+  if (!user) return null;
+
   const { userInfo, username } = user;
-
-  if (userInfo == null) return null;
-
   const { qrcodecolor, date } = userInfo[0];
   const lastDay = moment(date, "YYYY-MMM-DD");
   const today = moment().startOf("day");
