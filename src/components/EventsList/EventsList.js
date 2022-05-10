@@ -22,8 +22,12 @@ export default function EventsList({ displayModal }) {
   if (!data) return null;
 
   // map above data to list of components
-  const listOfEvents = data.map((event) => (
-    <EventCard data={event} displayModal={displayModal} />
+  const listOfEvents = data.map((event, index) => (
+    <EventCard
+      key={`eventCard-${index}`}
+      data={event}
+      displayModal={displayModal}
+    />
   ));
 
   return <div className="eventsList">{listOfEvents}</div>;
