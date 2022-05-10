@@ -10,6 +10,7 @@
   &__mapContainer {
     width: 100%;
     overflow: hidden;
+    margin-top: 15px;
   }
 
   &__map {
@@ -22,6 +23,7 @@
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
+    padding-top: 15px;
   }
 
   &__option {

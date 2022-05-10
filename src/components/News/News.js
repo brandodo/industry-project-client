@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import hideIcon from "../../assets/images/hide.svg";
 import "./News.scss";
 
 export default function News() {
@@ -8,7 +9,7 @@ export default function News() {
   const API_KEY = process.env.REACT_APP_API_KEY;
 
   const [headline, setHeadline] = useState();
-  const [image, setImage] = useState();
+  const [link, setLink] = useState();
   const [hide, setHide] = useState(false);
 
   useEffect(() => {
@@ -16,33 +17,31 @@ export default function News() {
       const { articles } = data;
       const dataLen = articles.length;
       const random = Math.floor(Math.random() * dataLen);
-
+      console.log(data);
       setHeadline(articles[random].title);
-      setImage(articles[random].urlToImage);
+      setLink(articles[random].url);
     });
   }, []);
 
   return (
     !hide && (
       <section className="dashboard__news">
-        {/* <h3 className="dashboard__news-header">News</h3> */}
         <div className="dashboard__news-container">
-          <div
-            className="dashboard__news-hide"
-            onClick={() => {
-              setHide(true);
-            }}
-          >
-            X
+          <div className="dashboard__news-upper">
+            <h3 className="dashboard__news-header">What's New...</h3>
+            <img
+              src={hideIcon}
+              className="dashboard__news-hide"
+              onClick={() => {
+                setHide(true);
+              }}
+            />
           </div>
-          <img
-            className="dashboard__news-background"
-            src={image}
-            alt="news-background"
-          />
-          <p className="dashboard__news-headline">
-            {headline || "Loading content..."}
-          </p>
+          <a className="dashboard__news-link" href={link} target="_blank">
+            <p className="dashboard__news-headline">
+              {headline || "Loading content..."}
+            </p>
+          </a>
         </div>
       </section>
     )

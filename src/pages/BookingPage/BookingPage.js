@@ -3,21 +3,102 @@ import BookingOptions from "../../components/BookingOptions/BookingOptions";
 import RoomBooking from "../../components/RoomBooking.js/RoomBooking";
 import DeskBooking from "../../components/DeskBooking/DeskBooking";
 import TimeBooking from "../../components/TimeBooking/TimeBooking";
-import BookedModal from "../../components/BookedModal/BookedModal";
+import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
+import API_URL from "../../components/utils";
+import axios from "axios";
 import "./BookingPage.scss";
 
-export default function BookingPage() {
+export default function BookingPage({ user }) {
   const [booking, setBooking] = useState("");
   const [color, setColor] = useState("");
   const [times, setTimes] = useState([]);
   const [booked, setBooked] = useState(false);
+  const [bookingData, setData] = useState({});
 
   const disableButton = !booking || !color || !times.length;
+
+  const confirmBooking = () => {
+    times.forEach((time) => {
+      axios
+        .post(`${API_URL}/booking`, {
+          roomname: color,
+          roomid: assignRoomId(color),
+          time: timeConvert(time),
+          date: new Date().toDateString(),
+          email: user.email,
+        })
+        .then((res) => {
+          console.log(res.data);
+
+          setData({
+            location: `${color} Room`,
+            time: times,
+            date: new Date().toDateString(),
+          });
+
+          setBooked(true);
+        })
+        .catch((err) => {
+          return err;
+        });
+    });
+  };
+
+  const timeConvert = (time) => {
+    switch (time) {
+      case "8-10AM":
+        return "8AM to 10AM";
+
+      case "10AM-12PM":
+        return "10AM to 12PM";
+
+      case "12-2PM":
+        return "12PM to 2PM";
+
+      case "2-4PM":
+        return "2PM to 4PM";
+
+      case "4-6PM":
+        return "4PM to 6PM";
+
+      case "6-8PM":
+        return "6PM to 8PM";
+    }
+  };
+
+  const assignRoomId = (room) => {
+    switch (room.toLowerCase()) {
+      case "red":
+        return "1";
+
+      case "blue":
+        return "2";
+
+      case "green":
+        return "3";
+
+      case "orange":
+        return "4";
+
+      case "pink":
+        return "5";
+
+      case "yellow":
+        return "6";
+    }
+  };
+
   return (
     <main className="booking">
-      {booked && <BookedModal />}
+      {booked && <ConfirmationModal type="work" data={bookingData} />}
       <h2 className="booking__header">Book In-Office Time</h2>
-      <form className="booking__form">
+      <form
+        className="booking__form"
+        onSubmit={(event) => {
+          event.preventDefault();
+          confirmBooking();
+        }}
+      >
         <BookingOptions setBooking={setBooking} />
         {booking === "room" ? (
           <>

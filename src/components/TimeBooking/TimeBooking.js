@@ -3,13 +3,14 @@ import "./TimeBooking.scss";
 import Times from "./Times";
 
 export default function TimeBooking({ times, setTimes }) {
-
   const hours = times.length * 2;
 
   return (
     <section className="timeBooking">
       <h2 className="timeBooking__header">Time</h2>
-      <p className="timeBooking__description">Please select the time(s) you would like to come for:</p>
+      <p className="timeBooking__description">
+        Please select the time(s) you would like to come for:
+      </p>
       <div className="timeBooking__options">
         <Times times={times} setTimes={setTimes}>
           8-10AM

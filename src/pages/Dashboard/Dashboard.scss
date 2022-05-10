@@ -10,11 +10,18 @@
   height: 100%;
 
   &__textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     padding: 0 30px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   &__headerText {
     @include mainHeader;
+    padding-bottom: 15px;
   }
 
   &__welcomeText {

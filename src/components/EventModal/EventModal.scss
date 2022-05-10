@@ -1,0 +1,103 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.eventModal {
+  background-color: rgba(0, 0, 0, 0.25);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    background-color: $backPrimary;
+    padding: 40px;
+  }
+
+  &__close {
+    position: relative;
+    top: -15px;
+    left: 10px;
+    align-self: flex-end;
+  }
+
+  &__header {
+    @include subHeader($textPrimary);
+  }
+
+  &__image {
+    width: 100%;
+    transform: scale(1.2);
+    box-sizing: border-box;
+
+    &Container {
+      width: 100%;
+      height: fit-content;
+      border-radius: 15px;
+      overflow: hidden;
+      margin-top: 25px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 25px;
+  }
+
+  &__description {
+    padding: 15px 0;
+    font-size: 16px;
+    line-height: 24px;
+    color: $textPrimary;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 24px;
+    color: $textPrimary;
+
+    &--location {
+      background-image: url("../../assets/images/location-pin-colored.svg");
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: contain;
+      padding-left: 25px;
+    }
+
+    &--time {
+      background-image: url("../../assets/images/clock_colored.svg");
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: contain;
+      padding-left: 25px;
+    }
+  }
+
+  &__button {
+    @include button($textPrimary, transparent);
+    border: 2px solid $ctaSecondary;
+  }
+}
+
+#drinks-event {
+  position: relative;
+  transform: scale(1.4);
+  top: -25px;
+}

@@ -1,0 +1,15 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.eventDescription {
+  &__header {
+    font-size: 20px;
+    color: $textPrimary;
+  }
+
+  &__text {
+    padding: 15px 0;
+    font-size: 16px;
+    color: $textPrimary;
+  }
+}

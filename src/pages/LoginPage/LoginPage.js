@@ -5,16 +5,18 @@ import Login from "../../components/Login/Login";
 import Options from "../../components/Login/Options";
 import axios from "axios";
 import API_URL from "../../components/utils";
+import moment from "moment";
 import logo from "../../assets/images/flex-office-logo_V01.png";
 import "./LoginPage.scss";
 
-export default function LoginPage({ setUser, setLoggedIn }) {
+export default function LoginPage({ setUser, setLoggedIn, setLate }) {
   const [login, setLogin] = useState(false);
   const [userType, setUserType] = useState();
   const [redirect, setRedirect] = useState(false);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
+    sessionStorage.clear();
     setShow(true);
   }, []);
 
@@ -34,14 +36,22 @@ export default function LoginPage({ setUser, setLoggedIn }) {
 
   // add function call to authenticate login
   // redirect to dashboard after successful login
-  const goToDashboard = (userid, password) => {
+  // handle error if invalid user
+  const goToDashboard = (email, password) => {
     axios
-      .post(`${API_URL}/login`, { userid, password })
+      .post(`${API_URL}/login`, { email, password })
       .then(({ data }) => {
         setUser(data);
         sessionStorage.setItem("userData", JSON.stringify(data));
         setLoggedIn(true);
         setRedirect(true);
+
+        const date = data.userInfo[0].date;
+        console.log(date);
+        const lastDay = moment(date, "YYYY-MMM-DD");
+        const today = moment().startOf("day");
+        const days = Math.round(moment.duration(today - lastDay).asDays());
+        days > 3 ? setLate(true) : setLate(false);
       })
       .catch((err) => {
         console.log(err);
@@ -49,9 +59,6 @@ export default function LoginPage({ setUser, setLoggedIn }) {
       });
   };
 
-  // handle error if invalid user
-
-  // redirect to dashboard after successful login
   if (redirect) {
     return <Redirect to="/dashboard" from="/" />;
   }

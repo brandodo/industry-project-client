@@ -1,3 +1,6 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
 .dashboard {
   &__news {
     display: flex;
@@ -5,40 +8,53 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    padding-top: 15px;
 
     &-container {
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      align-items: center;
+      align-items: flex-start;
       position: relative;
+      background-color: $backSecondary;
+      width: 100%;
+      padding: 25px;
+      box-sizing: border-box;
+    }
+
+    &-upper {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
     }
 
     &-header {
       margin: 0;
+      color: $default;
+      padding-bottom: 15px;
     }
 
     &-hide {
       width: fit-content;
       position: relative;
-      top: 30px;
-      left: 45%;
+      top: -15px;
       font-weight: 700;
       color: white;
       text-shadow: 2px 2px 5px black;
+      width: 18px;
     }
 
     &-background {
       width: 100%;
     }
 
+    &-link {
+      text-decoration: none;
+      color: $default;
+    }
+
     &-headline {
-      position: absolute;
-      color: white;
-      font-weight: 700;
-      padding: 10px 10px;
-      text-shadow: 4px 4px 5px black;
-      background-color: rgba(0, 0, 0, 0.75);
+      color: $default;
     }
   }
 }

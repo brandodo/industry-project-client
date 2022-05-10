@@ -1,8 +1,20 @@
 import { slide as Menu } from "react-burger-menu";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import userPic from "../../assets/images/hannah.png";
 import "./Hamburger.scss";
 
-export default function Hamburger() {
+export default function Hamburger({ user }) {
+  const [isOpen, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(!isOpen);
+  };
+
+  const closeSideBar = () => {
+    setOpen(false);
+  };
+
   return (
     <Menu
       className="header__menu"
@@ -10,18 +22,54 @@ export default function Hamburger() {
       outerContainerId={"outer-container"}
       width={"100%"}
       right
-      bodyClassName="header__menu"
+      isOpen={isOpen}
+      onOpen={handleOpen}
+      onClose={handleOpen}
+      styles={{
+        bmCrossButton: {
+          top: "-30px",
+          right: "25px",
+        },
+      }}
     >
-      <Link to="/dashboard" className="header__menu-cta">
+      <div className="header__menu-container" style={{ display: "flex" }}>
+        {user.username === "Hannah" ? (
+          <img className="header__menu-pic" src={userPic} alt="user" />
+        ) : (
+          <div className="header__menu-placeholder"></div>
+        )}
+        <h2 className="header__menu-user">{user.username}</h2>
+      </div>
+      <hr></hr>
+      <Link
+        to="/booking"
+        className="header__menu-cta header__menu-cta--schedule"
+        onClick={() => closeSideBar()}
+      >
         Schedule
       </Link>
-      <Link to="/events" className="header__menu-cta">
+      <hr></hr>
+      <Link
+        to="/events"
+        className="header__menu-cta"
+        onClick={() => closeSideBar()}
+      >
         Events
       </Link>
-      <Link to="/profile" className="header__menu-cta">
+      <hr></hr>
+      <Link
+        to="/profile"
+        className="header__menu-cta"
+        onClick={() => closeSideBar()}
+      >
         Profile
       </Link>
-      <Link to="/" className="header__menu-cta">
+      <hr></hr>
+      <Link
+        to="/"
+        className="header__menu-cta header__menu-cta--signOut"
+        onClick={() => closeSideBar()}
+      >
         Sign Out
       </Link>
     </Menu>

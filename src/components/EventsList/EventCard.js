@@ -1,11 +1,16 @@
 import API_URL from "../utils";
 
-export default function EventCard({ data }) {
+export default function EventCard({ data, displayModal }) {
   const { name, time, location, date, imageLarge } = data.eventinfo;
   const cardId = imageLarge.replace(".jpg", "");
 
   return (
-    <div className="eventsList__card">
+    <div
+      className="eventsList__card"
+      onClick={() => {
+        displayModal(data.eventinfo);
+      }}
+    >
       <img
         id={cardId}
         className="eventsList__image"

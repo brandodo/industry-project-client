@@ -1,8 +1,0 @@
-@use "../../styles/partials/variables" as *;
-@use "../../styles/partials/mixins" as *;
-
-.bookedModal {
-  &__button {
-    @include button($textPrimary, $ctaSecondary);
-  }
-}

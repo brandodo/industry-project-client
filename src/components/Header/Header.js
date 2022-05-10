@@ -5,7 +5,7 @@ import logo from "../../assets/images/flex-office-logo_V01.png";
 import stockBg from "../../assets/images/17839577_generated.jpg";
 import "./Header.scss";
 
-export default function Header({ user, loggedIn }) {
+export default function Header({ user }) {
   if (user) {
     return (
       <header className="header header--loggedIn">
@@ -16,7 +16,7 @@ export default function Header({ user, loggedIn }) {
             alt="logo"
           />
         </Link>
-        <Hamburger />
+        <Hamburger user={user} />
       </header>
     );
   }

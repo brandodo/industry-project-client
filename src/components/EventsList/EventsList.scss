@@ -12,6 +12,7 @@
     margin: 15px 0;
     overflow: hidden;
     border-radius: 10px;
+    box-shadow: 5px 5px 8px $shadow;
   }
 
   &__image {
@@ -39,8 +40,9 @@
 
   &__wrapper {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 15px;
     border-radius: 0 0 10px 10px;
     height: 40px;
     background-color: $default;

@@ -1,7 +1,44 @@
+@use "../../styles/partials/variables" as *;
+
 .header {
-  &__menu-cta {
-    text-decoration: none;
-    color: white;
+  &__menu {
+    &-container {
+      justify-content: flex-start;
+      align-items: center;
+      gap: 30px;
+      width: 100%;
+      padding: 30px 0;
+    }
+
+    &-user {
+      color: $default;
+    }
+
+    &-placeholder {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: $shadow;
+    }
+
+    &-cta {
+      text-decoration: none;
+      color: white;
+      padding-bottom: 30px;
+
+      &--schedule {
+        padding-top: 30px;
+      }
+
+      &--signOut {
+        font-weight: 600;
+      }
+    }
+  }
+
+  & hr {
+    margin-bottom: 30px;
+    border: 1px solid $textPrimary;
   }
 }
 
@@ -45,7 +82,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
+  background: $backSecondary;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
   margin-top: -60px;
@@ -64,7 +101,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* Individual item */
 .bm-item {
-  display: inline-block;
+  // display: inline-block;
 }
 
 /* Styling of overlay */

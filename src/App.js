@@ -12,17 +12,16 @@ import "./App.scss";
 function App() {
   const [user, setUser] = useState();
   const [loggedIn, setLoggedIn] = useState(false);
+  const [late, setLate] = useState(false);
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
-    if (!user && !loggedIn) {
+    if (!user || toggle) {
       setUser(JSON.parse(sessionStorage.getItem("userData")));
       setLoggedIn(true);
+      setToggle(false);
     }
-
-    // return () => {
-    //   sessionStorage.clear();
-    // };
-  }, [user]);
+  }, [user, toggle]);
 
   return (
     <BrowserRouter>
@@ -37,6 +36,7 @@ function App() {
                 <LoginPage
                   setUser={setUser}
                   setLoggedIn={setLoggedIn}
+                  setLate={setLate}
                   {...routerProps}
                 />
               )}
@@ -44,22 +44,39 @@ function App() {
             <Route
               path="/dashboard"
               render={(routerProps) => (
-                <Dashboard user={user} setUser={setUser} {...routerProps} />
+                <Dashboard
+                  user={user}
+                  setUser={setUser}
+                  late={late}
+                  toggle={toggle}
+                  setToggle={setToggle}
+                  {...routerProps}
+                />
               )}
             />
             <Route
               path="/status"
               render={(routerProps) => (
-                <StatusPage user={user} setUser={setUser} {...routerProps} />
+                <StatusPage
+                  user={user}
+                  setUser={setUser}
+                  late={late}
+                  setLate={setLate}
+                  {...routerProps}
+                />
               )}
             />
             <Route
               path="/events"
-              render={(routerProps) => <EventsPage {...routerProps} />}
+              render={(routerProps) => (
+                <EventsPage user={user} {...routerProps} />
+              )}
             />
             <Route
               path="/booking"
-              render={(routerProps) => <BookingPage {...routerProps} />}
+              render={(routerProps) => (
+                <BookingPage user={user} {...routerProps} />
+              )}
             />
           </Switch>
         </div>

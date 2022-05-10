@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { scaleDown } from "react-burger-menu";
-import map from "../../assets/images/sup46map.png";
+// import map from "../../assets/images/sup46map.png";
+import map from "../../assets/images/Map.jpg";
 import "./RoomBooking.scss";
 
 export default function RoomBooking({ color, setColor }) {
   const [zoom, setZoom] = useState({});
 
+  const colorLower = color.toLowerCase();
   const createZoom = (x, y) => {
-    setZoom({ transform: "scale(2)", position: "relative", left: x, top: y });
+    setZoom({ transform: "scale(2.3)", position: "relative", left: x, top: y });
   };
 
   return (
@@ -26,78 +28,78 @@ export default function RoomBooking({ color, setColor }) {
       <div className="roomBooking__options">
         <div
           className={
-            color === "red"
+            colorLower === "red"
               ? "roomBooking__option roomBooking__option--active"
               : "roomBooking__option"
           }
           onClick={() => {
-            createZoom(120, -150);
-            setColor("red");
+            createZoom(130, -150);
+            setColor("Red");
           }}
         >
           Red
         </div>
         <div
           className={
-            color === "blue"
+            colorLower === "blue"
               ? "roomBooking__option roomBooking__option--active"
               : "roomBooking__option"
           }
           onClick={() => {
             createZoom(120, 20);
-            setColor("blue");
+            setColor("Blue");
           }}
         >
           Blue
         </div>
         <div
           className={
-            color === "green"
+            colorLower === "green"
               ? "roomBooking__option roomBooking__option--active"
               : "roomBooking__option"
           }
           onClick={() => {
             createZoom(180, 120);
-            setColor("green");
+            setColor("Green");
           }}
         >
           Green
         </div>
         <div
           className={
-            color === "orange"
+            colorLower === "orange"
               ? "roomBooking__option roomBooking__option--active"
               : "roomBooking__option"
           }
           onClick={() => {
             createZoom(-60, 120);
-            setColor("orange");
+            setColor("Orange");
           }}
         >
           Orange
         </div>
         <div
           className={
-            color === "pink"
+            colorLower === "pink"
               ? "roomBooking__option roomBooking__option--active"
               : "roomBooking__option"
           }
           onClick={() => {
             createZoom(-220, 120);
-            setColor("pink");
+            setColor("Pink");
           }}
         >
           Pink
         </div>
         <div
           className={
-            color === "yellow"
+            colorLower === "yellow"
               ? "roomBooking__option roomBooking__option--active"
               : "roomBooking__option"
           }
           onClick={() => {
             createZoom(-220, 10);
-            setColor("yellow");
+            setColor("Yellow");
           }}
         >
           Yellow
