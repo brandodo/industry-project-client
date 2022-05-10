@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { scaleDown } from "react-burger-menu";
-// import map from "../../assets/images/sup46map.png";
 import map from "../../assets/images/Map.jpg";
 import "./RoomBooking.scss";
 
@@ -8,6 +6,8 @@ export default function RoomBooking({ color, setColor }) {
   const [zoom, setZoom] = useState({});
 
   const colorLower = color.toLowerCase();
+
+  // handle zooming into selected room
   const createZoom = (x, y) => {
     setZoom({ transform: "scale(2.3)", position: "relative", left: x, top: y });
   };

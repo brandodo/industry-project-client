@@ -6,6 +6,7 @@ import stockBg from "../../assets/images/17839577_generated.jpg";
 import "./Header.scss";
 
 export default function Header({ user }) {
+  // display different header depending if a user is logged in or not
   if (user) {
     return (
       <header className="header header--loggedIn">

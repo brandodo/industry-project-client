@@ -3,6 +3,7 @@ import React from "react";
 export default function ConfirmationDetails({ workModal, data }) {
   let timeList;
 
+  // handle format of time string
   if (workModal) {
     const { time } = data;
     timeList = time.join(", ");

@@ -1,4 +1,3 @@
-import React from "react";
 import ConfirmationButton from "./ConfirmationButton";
 import ConfirmationDetails from "./ConfirmationDetails";
 import EventDescription from "../EventDescription/EventDescription";

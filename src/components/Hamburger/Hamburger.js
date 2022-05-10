@@ -5,6 +5,8 @@ import userPic from "../../assets/images/hannah.png";
 import "./Hamburger.scss";
 
 export default function Hamburger({ user }) {
+  // used react-burger-menu package: https://www.npmjs.com/package/react-burger-menu
+
   const [isOpen, setOpen] = useState(false);
 
   const handleOpen = () => {

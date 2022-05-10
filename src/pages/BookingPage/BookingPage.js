@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import BookingOptions from "../../components/BookingOptions/BookingOptions";
 import RoomBooking from "../../components/RoomBooking.js/RoomBooking";
 import DeskBooking from "../../components/DeskBooking/DeskBooking";
@@ -17,6 +17,7 @@ export default function BookingPage({ user }) {
 
   const disableButton = !booking || !color || !times.length;
 
+  // create booking entry for each time slot selected
   const confirmBooking = () => {
     times.forEach((time) => {
       axios
@@ -28,8 +29,6 @@ export default function BookingPage({ user }) {
           email: user.email,
         })
         .then((res) => {
-          console.log(res.data);
-
           setData({
             location: `${color} Room`,
             time: times,
@@ -44,6 +43,7 @@ export default function BookingPage({ user }) {
     });
   };
 
+  // accommodate for time formatting - on list of enhancements
   const timeConvert = (time) => {
     switch (time) {
       case "8-10AM":
@@ -63,9 +63,13 @@ export default function BookingPage({ user }) {
 
       case "6-8PM":
         return "6PM to 8PM";
+
+      default:
+        return;
     }
   };
 
+  // room id assignment - on list of enhancements
   const assignRoomId = (room) => {
     switch (room.toLowerCase()) {
       case "red":
@@ -85,6 +89,9 @@ export default function BookingPage({ user }) {
 
       case "yellow":
         return "6";
+
+      default:
+        return;
     }
   };
 

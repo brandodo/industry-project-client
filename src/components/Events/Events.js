@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Event from "./Event";
 import API_URL from "../utils";
@@ -21,6 +21,7 @@ export default function Events() {
 
   if (!data) return null;
 
+  // display only 3 events for preview on dashboard
   const preview = data
     .slice(0, 3)
     .map((item, index) => (

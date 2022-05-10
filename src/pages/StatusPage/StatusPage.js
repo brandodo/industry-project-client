@@ -13,6 +13,7 @@ export default function StatusPage({ match, user, setUser, late, setLate }) {
   const { userInfo, email, username } = user;
   const { qrcodecolor, date } = userInfo[0];
 
+  // submit form to update user's status
   const handleForm = (warning) => {
     axios
       .put(`${API_URL}/login/qrcode`, {

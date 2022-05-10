@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import qrCode from "../../assets/images/QRcode-placeholder.png";
 import "./UpdatedModal.scss";

@@ -9,6 +9,7 @@ import API_URL from "../../components/utils";
 import axios from "axios";
 
 export default function Dashboard({ user, match, late, setToggle }) {
+  // persist the user's profile using sessionStorage
   useEffect(() => {
     if (user) {
       const { email, password } = user;
@@ -44,6 +45,8 @@ export default function Dashboard({ user, match, late, setToggle }) {
         status={late ? "warning" : qrcodecolor}
         date={date}
       />
+
+      {/* Prevent user from booking if "Yes" to any symptoms */}
       {qrcodecolor === "error" ? (
         ""
       ) : (

@@ -20,10 +20,14 @@ export default function Status({ match, status, date }) {
             You are <b>not</b> cleared to enter the office!
           </p>
         );
+
+      default:
+        return;
     }
   };
 
   const message = chooseMessage(status);
+
   return (
     <section className="status">
       <div className="status__hContainer">

@@ -16,6 +16,7 @@ export default function EventsPage({ user }) {
     setShow(true);
   };
 
+  // create event booking entry
   const bookEvent = (eventName) => {
     axios
       .post(`${API_URL}/booking/event`, {

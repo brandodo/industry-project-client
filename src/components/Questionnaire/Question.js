@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Question({ children, name, changeHandler }) {
   return (
     <div className="questionnaire__container">

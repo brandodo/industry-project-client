@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Login.scss";
 
 export default function Login({ userType, formHandler }) {
+  // used controlled components to manage user input
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

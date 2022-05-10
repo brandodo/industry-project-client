@@ -1,10 +1,10 @@
-import React from "react";
 import "./BookingCard.scss";
 
 export default function BookingCard({ data, type, email }) {
   let tempArr;
   let circleStyle;
 
+  // set styling for circles to match room colors/name
   const colorPicker = (color) => {
     switch (color) {
       case "Red":
@@ -25,6 +25,9 @@ export default function BookingCard({ data, type, email }) {
       case "Yellow":
         circleStyle = { backgroundColor: "#CABB78" };
         break;
+
+      default:
+        return;
     }
   };
 
@@ -47,6 +50,9 @@ export default function BookingCard({ data, type, email }) {
 
       case "6PM to 8PM":
         return "6-8PM";
+
+      default:
+        return;
     }
   };
 
@@ -76,7 +82,7 @@ export default function BookingCard({ data, type, email }) {
         <p className="bookingCard__text">
           {type === "event"
             ? data.time
-            : tempArr[0] == undefined
+            : tempArr[0] == null
             ? ""
             : timeConvert(tempArr[0].timeperiod)}
         </p>

@@ -34,9 +34,9 @@ export default function LoginPage({ setUser, setLoggedIn, setLate }) {
     config: config.slow,
   });
 
-  // add function call to authenticate login
-  // redirect to dashboard after successful login
-  // handle error if invalid user
+  // send POST call to authenticate user and handle response
+  // success -> redirect to dashboard
+  // fail -> alert user of incorrect email / password
   const goToDashboard = (email, password) => {
     axios
       .post(`${API_URL}/login`, { email, password })
@@ -46,16 +46,15 @@ export default function LoginPage({ setUser, setLoggedIn, setLate }) {
         setLoggedIn(true);
         setRedirect(true);
 
+        // check if user needs to update their status
         const date = data.userInfo[0].date;
-        console.log(date);
         const lastDay = moment(date, "YYYY-MMM-DD");
         const today = moment().startOf("day");
         const days = Math.round(moment.duration(today - lastDay).asDays());
         days > 3 ? setLate(true) : setLate(false);
       })
       .catch((err) => {
-        console.log(err);
-        alert(err.response.data);
+        return alert(err.response.data);
       });
   };
 

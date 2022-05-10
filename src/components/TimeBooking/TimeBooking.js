@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./TimeBooking.scss";
 import Times from "./Times";
 

@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Question from "./Question";
 import "./Questionnaire.scss";
 
-export default function Questionnaire({ user, handleForm }) {
+export default function Questionnaire({ handleForm }) {
   const [fever, setFever] = useState("");
   const [cough, setCough] = useState("");
   const [breath, setBreath] = useState("");
@@ -23,12 +23,14 @@ export default function Questionnaire({ user, handleForm }) {
       <h3 className="questionnaire__header">
         Have any of your symptoms changed?
       </h3>
+
       <div className="questionnaire__radioHeader">
         <div className="questionnaire__wrapper">
           <p className="questionnaire__radioLabel">no</p>
           <p className="questionnaire__radioLabel">yes</p>
         </div>
       </div>
+
       <Question name="feverQuestion" changeHandler={setFever}>
         Do you have a fever above 37.7C?
       </Question>
