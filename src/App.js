@@ -25,7 +25,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="app">
+      {/* <div className="app"> */}
         <Header user={user} loggedIn={loggedIn} />
         <div id="outer-container" className={user ? "appContainer" : ""}>
           <Switch>
@@ -81,7 +81,7 @@ function App() {
           </Switch>
         </div>
         {user && <Footer />}
-      </div>
+      {/* </div> */}
     </BrowserRouter>
   );
 }
