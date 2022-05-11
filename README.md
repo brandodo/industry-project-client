@@ -11,7 +11,7 @@ FlexoOffice is a mobile web based application where employees and employers can 
 
 Feel free to test the application on your mobile device using our dummy account:
 
-Username: hannah@brainstation.com 
+Username: hannah@brainstation.com  
 Password: brainstation
 
 See the PDF [here](https://github.com/brandodo/industry-project-client/blob/main/FlexoOffice.pdf) for more details on both the design and development process.
