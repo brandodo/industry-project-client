@@ -3,8 +3,8 @@ import "./Login.scss";
 
 export default function Login({ userType, formHandler }) {
   // used controlled components to manage user input
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("hannah@brainstation.com");
+  const [password, setPassword] = useState("brainstation");
 
   const disableButton = !email || !password;
 
